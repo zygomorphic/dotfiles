@@ -54,5 +54,3 @@ set selectmode=mouse,key
 set nobackup  
 set nowb  
 set noswapfile  
-
-
