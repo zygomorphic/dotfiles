@@ -55,6 +55,9 @@ promptinit
 # prompt off
 setopt prompt_subst
 
+
+
+
 ## 加载zsh文件
 for config_file (~/.zsh/lib/*.zsh); do
   custom_config_file="${ZSH_CUSTOM}/lib/${config_file:t}"
