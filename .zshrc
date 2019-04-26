@@ -1,4 +1,4 @@
-HISTFILE=~/.zsh/histfile
+HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 
@@ -13,7 +13,7 @@ export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 # 开启颜色
 autoload -U colors && colors
 #export LSCOLORS="Gxfxcxdxbxegedabagacad"
-
+alias gpm="git push -u origin master"
 alias nvc="optirun chromium"
 alias nvv="optirun VirtualBox"
 alias ls="ls --color -F"
@@ -59,7 +59,7 @@ setopt prompt_subst
 
 
 ## 加载zsh文件
-for config_file (~/.zsh/lib/*.zsh); do
+for config_file (~/.dotfiles/zsh/lib/*.zsh); do
   custom_config_file="${ZSH_CUSTOM}/lib/${config_file:t}"
   [ -f "${custom_config_file}" ] && config_file=${custom_config_file}
   source $config_file
