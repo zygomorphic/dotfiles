@@ -1,8 +1,93 @@
-xterm*ScrollBar: true
+xterm*ScrollBar: false
 xterm*faceName: DejaVu Sans Mono Book
 xterm*faceNameDoublesize: WenQuanYi Micro Hei
 xterm*faceSize: 11
 xterm*allowBoldFonts: false
-xterm*foreground: grey100 
-xterm*background: rgb:30/10/10
 !xterm*background: black
+
+
+
+case $TERM in
+  (*xterm* | rxvt)
+    function precmd {
+      print -Pn "\e]0;zsh%L %(1j,%j job%(2j|s|); ,)%~\a"
+    }
+    function preexec {
+      printf "\033]0;%s\a" "$1"
+    }
+esac
+
+
+
+! Rxvt config
+
+!URxvt.title: hutaow-rxvt
+
+!!颜色设置
+URxvt.depth:32
+URxvt*shading: 20
+!!中括号内数表示透明度
+URxvt.background:[72]#000000
+URxvt.foreground:#ffffff
+!URxvt.foreground:#f2eaca
+!Black
+URxvt.color0:#000000
+URxvt.color8:#555753
+!Red
+URxvt.color1:#CC0000
+URxvt.color9:#EF2929
+!Green
+URxvt.color2:#4E9A06
+URxvt.color10:#8AE234
+!Yellow
+URxvt.color3:#C4A000
+URxvt.color11:#FCE94F
+!Blue
+URxvt.color4:#3465A4
+URxvt.color12:#729FCF
+!Magenta
+URxvt.color5:#75507B
+URxvt.color13:#AD7FA8
+!Cyan
+URxvt.color6:#06989A
+URxvt.color14:#34E2E2
+!White
+URxvt.color7:#D3D7CF
+URxvt.color15:#EEEEEC
+!!滚动条设置
+URxvt.scrollBar:False
+!!URxvt.scrollBar_right:True
+!!URxvt.scrollBar_floating:False
+!!URxvt.scrollstyle:plain
+!!滚屏设置
+!!URxvt.mouseWheelScrollPage:True
+URxvt.scrollTtyOutput:False
+URxvt.scrollWithBuffer:True
+URxvt.scrollTtyKeypress:True
+!!光标闪烁
+URxvt.cursorBlink:True
+URxvt.saveLines:8000
+!!边框
+URxvt.borderLess:False
+!! 字体设置
+URxvt.letterSpace: -1
+URxvt.multichar_encoding:utf-8
+URxvt.font: xft:Monaco:style=Regular:antialias=True:pixelsize=18,xft:WenQuanYi Micro Hei Mono:style=Regular:pixelsize=18
+URxvt.boldFont: xft:Monaco:style=Bold:antialias=True:pixelsize=18,xft:WenQuanYi Micro Hei Mono:style=Bold:pixelsize=18
+
+!! perl扩展:支持Ctrl+ALT+C拷贝,支持终端链接可打开,支持快捷键调整字体大小
+URxvt.perl-ext-common: selection-to-clipboard,matcher,resize-font,searchable-scrollback
+URxvt.perl-ext: url-select
+!!URL操作
+URxvt.url-launcher: chromium
+URxvt.matcher.button: 1
+!!URxvt.matcher.rend.0: Uline Bold fg5
+URxvt.matcher.rend.0: Uline Bold
+URxvt.colorUL: #ff0000
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.launcher: /usr/local/bin/conkeror
+URxvt.url-select.underline: true
+URxvt.resize-font.smaller: C-Down
+URxvt.resize-font.bigger: C-Up
+!! 打开搜索功能
+URxvt.keysym.M-s: searchable-scrollback:start

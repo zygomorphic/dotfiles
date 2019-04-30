@@ -2,7 +2,7 @@ HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 
-export BROWSER="firefox"
+export BROWSER="chromium"
 export EDITOR="vim"
 export PATH="${PATH}:${HOME}/bin:${HOME}/.cabal/bin"
 export JAVA_HOME=/usr/local/runtime/java/jdk1.8.0_201
@@ -69,7 +69,6 @@ PROMPT='%{∛$terminfo[bold]$fg[green]%}%n@%m %{$reset_color%}%{$fg_bold[white]%
 %{$terminfo[blod]$fg[$CARETCOLOR]%}↬ %{$reset_color%}'
 PROMPT2='%{$fg[$CARETCOLOR]%}↫%{$reset_color%} '
 RPROMPT='%{$(echotc UP 1)%}$(_git_time_since_commit) $(git_prompt_status) ${_return_status}%{$(echotc DO 1)%}'
-
 ## 相关变量配置
 local _current_dir="%3~ "
 local _return_status="%{$fg_bold[red]%}%(?..⍉)%{$reset_color%}"
@@ -142,3 +141,10 @@ export LSCOLORS="exfxcxdxbxegedabagacad"
 export LS_COLORS='no=00;37:fi=00:di=00;33:ln=04;36:pi=40;33:so=01;35:bd=40;33;01:'
 export GREP_COLOR='1;33'
 export CLICOLOR=1
+
+
+# urxvt title
+precmd() {
+    print -Pn "\e]0;%n@%m: %~\a"
+}
+    
